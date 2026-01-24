@@ -54,7 +54,8 @@ echo "
     \"qemu\": {
         \"adapter_type\": \"e1000\",
         \"adapters\": 10,
-        \"ram\": 4096,
+        \"ram\": 8192,
+        \"cpus\": 2,
         \"hda_disk_interface\": \"virtio\",
         \"arch\": \"x86_64\",
         \"console_type\": \"telnet\",

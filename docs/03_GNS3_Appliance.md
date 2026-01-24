@@ -2,6 +2,8 @@
 
 A GNS3 appliance is a pre-configured virtual device definition that simplifies the deployment of network operating systems and tools within the GNS3 environment. Packaged as a `.gns3a` file, each appliance includes metadata such as the device name, supported emulators (e.g., QEMU, Docker), minimum hardware requirements, recommended images, and startup configurations. Appliances streamline the process of importing and launching complex systems like Cisco vIOS, Juniper vMX, or open-source firewalls by automatically linking the correct image formats and settings. By using appliances, users can significantly reduce setup time, ensure consistency across environments, and gain access to a library of trusted and ready-to-deploy network components.
 
+> For a complete list of GNS3 appliance definitions, refer to the official GNS3 [appliance registry](https://github.com/GNS3/gns3-registry/tree/master/appliances).
+
 ## GNS3 Marketplace
 
 The GNS3 [Marketplace](https://gns3.com/marketplace/appliances) is an official online platform where users can browse, download, and share GNS3 appliances. It hosts a wide range of vendor-supported and community-contributed appliances, including routers, switches, firewalls, Linux utilities, and containerized services. Each appliance in the marketplace includes a `.gns3a` file.
