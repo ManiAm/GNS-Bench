@@ -1,6 +1,22 @@
 
 # Management Host
 
+The management-host is a Docker container that is built on Ubuntu 20.04.2 LTS.
+
+Connect to GNS3 VM and open a shell.
+
+Clone this repository:
+
+    git clone https://github.com/ManiAm/GNS-Bench
+    cd GNS-Bench/
+
+Change to management_host directory and build the docker image:
+
+    cd management_host
+    docker build -t management-host-ubuntu .
+
+Now we can use our container in GNS3. Click "Edit-> Preferences-> Docker Containers-> New". Select "Existing image", and then pick the one you just created from the dropdown list, and click "Next" to continue. Follow the instructions.
+
 ## Configuring DHCP Server
 
 In our topology, the management-host is configured to serve as a dedicated DHCP server. It manages two network interfaces:

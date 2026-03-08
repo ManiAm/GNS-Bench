@@ -54,23 +54,7 @@ Below is a sample topology built with:
 
 This setup enables testing of both data and control plane behavior, along with external connectivity for software updates or telemetry. This project serves as a foundation for future work, where we will build more advanced network scenarios and automation workflows on top of this GNS3 setup.
 
-## Management Host
-
-The management-host is a Docker container that is built on Ubuntu 20.04.2 LTS.
-
-Connect to GNS3 VM and open a shell.
-
-Clone this repository:
-
-    git clone https://github.com/ManiAm/GNS-Bench
-    cd GNS-Bench/
-
-Change to management_host directory and build the docker image:
-
-    cd management_host
-    docker build -t management-host-ubuntu .
-
-Now we can use our container in GNS3. Click "Edit-> Preferences-> Docker Containers-> New". Select "Existing image", and then pick the one you just created from the dropdown list, and click "Next" to continue. Follow the instructions. Refer to [this guide](docs/Management_host.md) to configure the management host.
+> Refer to [this guide](docs/Management_host.md) to configure the management host.
 
 ## SSH Access to GNS3 Devices
 
