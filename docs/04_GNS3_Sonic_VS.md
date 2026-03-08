@@ -1,7 +1,29 @@
 
+## Obtain the SONiC VS Image
+
+You must obtain the `sonic-vs.img` QCOW2 image. You can either download a prebuilt image from the SONiC build pipeline or [build it locally](./Sonic_Build.md) from source. The easiest approach is to download the latest `sonic-vs.img` from the SONiC Azure Pipeline.
+
+The [SONiC Azure Pipelines](https://sonic-build.azurewebsites.net/ui/sonic/Pipelines) portal hosts official CI/CD pipelines. Each pipeline is associated with a specific hardware platform (e.g., Broadcom, Mellanox, Marvell, Centec, Innovium, Virtual Switch). The portal allows you to monitor builds, access artifacts, and download images suitable for deployment and testing.
+
+Navigate to the VS (Virtual Switch) pipeline on the Sonic CI portal.
+
+Find the master branch and click on the 'Build History'.
+
+Select the latest successful build by clicking on 'Artifacts'.
+
+Under artifacts, click on `sonic-buildimage.vs`.
+
+Download the artifact `target/sonic-vs.img.gz`.
+
 ## Creating a SONiC GNS3 Appliance
 
-Download the latest `sonic-vs.img` QCOW2 image from the SONiC Image Azure Pipeline. Refer to [here](https://github.com/ManiAm/sonic-proxy/blob/master/README_Sonic.md#downloading-sonic-qcow2-image) for more details. After extracting the image, create a GNS3 appliance using the `sonic-gns3a.sh` utility:
+Extract `sonic-vs.img.gz`:
+
+```bash
+gunzip sonic-vs.img.gz
+```
+
+Create a GNS3 appliance using the `sonic-gns3a.sh` utility:
 
 ```bash
 sonic-gns3a.sh -r 1.1 -b /path/to/sonic-vs.img

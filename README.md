@@ -10,6 +10,7 @@ The following documentation provides a step-by-step introduction to setting up a
 - [How to import and configure appliances](docs/03_GNS3_Appliance.md)
 - [Setup and usage of Sonic virtual switches](docs/04_GNS3_Sonic_VS.md)
 - [Configuration for Cisco 8102 devices in GNS3](docs/05_GNS3_Cisco_8102.md)
+- [Building a Sonic VS image locally](docs/Sonic_Build.md)
 
 ## Getting Started
 
