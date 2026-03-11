@@ -5,13 +5,12 @@ This guide describes how to build the SONiC Virtual Switch (VS) image on an x86_
 
 ### Host OS
 
-Ubuntu 22.04 LTS is the commonly recommended host OS for building SONiC images and doing development work. Many existing community guides also use the older Ubuntu 20.04 LTS (especially for VS workflows) due to its long track record and broad compatibility. In practice, both are widely used; the key is to follow the dependency and container tooling expectations of the specific SONiC branch you are building.
+Ubuntu 22.04 LTS is the recommended host OS for building SONiC images and doing development work. Many existing community guides also use the older Ubuntu 20.04 LTS (especially for VS workflows) due to its long track record and broad compatibility. In practice, both are widely used; the key is to follow the dependency and container tooling expectations of the specific SONiC branch you are building. We will focus on Ubuntu 22.04 LTS here.
 
 ### Hardware Requirements
 
 | Resource       | Recommended                           |
 | -------------- | ------------------------------------- |
-| OS             | Ubuntu/Debian Linux                   |
 | CPU cores      | ≥ 8 cores (more helps, up to a point) |
 | RAM size       | ≥ 32 GB (8 GB minimum)                |
 | Disk space     | ≥ 300–500 GB (SSD/NVMe preferred)     |
@@ -21,7 +20,7 @@ Ubuntu 22.04 LTS is the commonly recommended host OS for building SONiC images a
 
 - **RAM**: Builds can consume significant memory, particularly when Docker runs multiple build stages concurrently. Insufficient RAM can slow builds substantially and may trigger OOM failures. 32 GB+ is recommended for a smoother experience.
 
-- **Storage**: SONiC builds generate large intermediate artifacts, container layers, and output packages. Disk consumption increases further when you build multiple targets or increase parallelism (e.g., `SONIC_BUILD_JOBS` > 1). 500 GB free is a comfortable target for repeated builds and cached artifacts. SSD/NVMe significantly improves build throughput due to heavy I/O.
+- **Storage**: SONiC builds generate large intermediate artifacts, container layers, and output packages. Disk consumption increases further when you build multiple targets or increase parallelism. 500 GB free is a comfortable target for repeated builds and cached artifacts. SSD/NVMe significantly improves build throughput due to heavy I/O.
 
 - **KVM**: KVM is not required for every build step, but it is strongly recommended especially when building inside a VM. This is because some workflows may rely on virtualization or run much faster when hardware acceleration is available. Without KVM, tasks can fall back to software emulation, which may be dramatically slower and can lead to timeouts in certain environments.
 
@@ -107,7 +106,7 @@ SONiC caches downloaded packages and build artifacts in `/var/cache/sonic` to sp
 
 ### Clone and Build SONiC
 
-Clone the official SONiC build image repository:
+Clone the official SONiC build image repository with all the git submodules:
 
     git clone --recurse-submodules https://github.com/sonic-net/sonic-buildimage.git
 
@@ -118,6 +117,10 @@ Go to the root of the repository:
 Cloning the `master` branch is typical for VS development. If the latest commit fails to build (which can happen, as `master` is the active development branch), you can check out a stable release tag instead:
 
     git checkout 202511
+
+SONiC follows a semi-annual release cycle, with major releases typically published in May and November each year.
+
+<img src="../pics/sonic-release.png" alt="segment" width="600">
 
 SONiC historically supported multiple Debian releases (Jessie → Stretch → Buster → Bullseye → Bookworm). The build system can generate base containers for all of them, but this is unnecessary for modern VS builds and significantly increases build time. To restrict the build to Debian Bookworm only:
 
@@ -142,7 +145,7 @@ Build the SONiC VS image:
 
     SONIC_BUILD_JOBS=8 make target/sonic-vs.img.gz
 
-This builds the Sonic `.bin` image. It then convert it into a QCOW2 image suitable for direct use with QEMU. You do not need to install QEMU on your machine. The build is done inside a container and QEMU is installed inside that environment. You can find `qemu-kvm` listed in [here](https://github.com/sonic-net/sonic-buildimage/blob/master/sonic-slave-bookworm/Dockerfile.j2).
+This builds the Sonic `.bin` image under `/target`. It then convert it into a QCOW2 image suitable for direct use with QEMU. You do not need to install QEMU on your machine. The build is done inside a container and QEMU is installed inside that environment. You can find `qemu-kvm` listed in [here](https://github.com/sonic-net/sonic-buildimage/blob/master/sonic-slave-bookworm/Dockerfile.j2).
 
 ### Running Sonic VS
 
