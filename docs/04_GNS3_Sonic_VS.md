@@ -1,7 +1,7 @@
 
 ## Obtain the SONiC VS Image
 
-You must obtain the `sonic-vs.img` QCOW2 image. You can either download a prebuilt image from the SONiC build pipeline or [build it locally](./Sonic_Build.md) from source. The easiest approach is to download the latest `sonic-vs.img` from the SONiC Azure Pipeline.
+You must obtain the `sonic-vs.img` QCOW2 image. You can either download a prebuilt image from the SONiC build pipeline or [build it locally](https://github.com/ManiAm/net-lab-switch-setup/blob/master/docs/Sonic_Build.md) from source. The easiest approach is to download the latest `sonic-vs.img` from the SONiC Azure Pipeline.
 
 The [SONiC Azure Pipelines](https://sonic-build.azurewebsites.net/ui/sonic/Pipelines) portal hosts official CI/CD pipelines. Each pipeline is associated with a specific hardware platform (e.g., Broadcom, Mellanox, Marvell, Centec, Innovium, Virtual Switch). The portal allows you to monitor builds, access artifacts, and download images suitable for deployment and testing.
 
