@@ -7,19 +7,21 @@ GNS3 can be installed on [Windows](https://docs.gns3.com/docs/getting-started/in
 - Microsoft Hyper-V
 - KVM/QEMU
 
-## GNS3 VM and Type-1 Hypervisors
+## GNS3 VM on a Type 1 Hypervisor
 
-GNS3 can be effectively deployed on type 1 hypervisors such as `VMware ESXi` and `Proxmox VE`, providing a scalable foundation for network simulation. In this architecture, the GNS3 VM runs on the hypervisor, while the GNS3 user interface is typically executed on a separate management workstation. This separation of compute and control layers enables efficient offloading of resource-intensive tasks, supports larger and more complex network topologies, and improves overall performance. With proper configuration including nested virtualization, bridged networking, and optimized CPU settings GNS3 on type 1 hypervisors offers near-native performance, enhanced reliability, and is well-suited for enterprise-grade labs, multi-user environments, and advanced simulation workflows.
+GNS3 can be deployed on a Type 1 (bare-metal) hypervisor such as VMware ESXi or Proxmox VE (for background on Type 1 hypervisors, KVM, and Proxmox, see the [Virtualization Primer — Type 1 Hypervisors](https://github.com/ManiAm/primer-virtualization/blob/master/docs/03_type1_hypervisors.md)). In this architecture, the GNS3 VM runs on the hypervisor while the GNS3 GUI runs on a separate management workstation. This separation offloads resource-intensive emulation to the server, supports larger topologies, and improves overall performance.
 
-## Proxmox Virtual Environment (VE)
+## Proxmox VE — Home Lab Setup
 
-Proxmox VE is an open-source, Debian-based type 1 hypervisor that provides virtualization through KVM and LXC, offering an integrated web-based management interface, high availability clustering, backup/restore tools, and support for both virtual machines and containers. Unlike VMware ESXi, which is a proprietary hypervisor focused solely on VM-based virtualization and typically requires a commercial license for advanced features, Proxmox VE is fully open-source and provides robust enterprise features such as live migration, ZFS storage integration, and full API access without licensing restrictions. While ESXi is widely used in enterprise datacenters for its stability and ecosystem, Proxmox is favored in home labs, startups, and open-source environments for its flexibility, transparency, and low cost of ownership.
+In my home lab, I run Proxmox VE on the **MINISFORUM UM890 Pro**, a compact mini PC with:
 
-In my home lab, I run Proxmox VE on the MINISFORUM UM890 Pro, a compact yet powerful mini PC. This system features 64 GB of DDR5 RAM and a high-speed 1 TB PCIe 4.0 NVMe SSD, delivering high performance for virtualization workloads. At its core is the AMD Ryzen 9 8945HS processor, an 8-core, 16-thread CPU built on Zen 4 architecture, integrated with Radeon 780M graphics, making it well-suited for demanding compute and graphics tasks in a space-efficient form factor.
+- **CPU** — AMD Ryzen 9 8945HS (8 cores / 16 threads, Zen 4) with Radeon 780M iGPU
+- **RAM** — 64 GB DDR5
+- **Storage** — 1 TB PCIe 4.0 NVMe SSD
 
-<img src="../pics/proxmox.jpg" alt="segment" width="700">
+<img src="../pics/proxmox.jpg" alt="Proxmox VE home lab" width="700">
 
-Follow these [video instructions](https://youtu.be/qmSizZUbCOA) to setup your Proxmox.
+Follow these [video instructions](https://youtu.be/qmSizZUbCOA) to set up Proxmox VE.
 
 ## Setting up GNS3 VM on Proxmox VE
 
